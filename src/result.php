@@ -1,4 +1,4 @@
-<?php include 'assets/inc/conn.php';?>
+<?php include 'assets/include/conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +37,7 @@
             $str = str_replace('ç', 'Ç', $str);
             return $str;
           }
-          
+
           // Kullanıcı Bilgileri
           $AdSoyad = isset($_POST["adsoyad"]) ? strtoupper(pre_up($_POST["adsoyad"])) : "";
           $OkulNo = isset($_POST["okulno"]) ? $_POST["okulno"] : "";
@@ -48,7 +48,7 @@
           //echo $AdSoyad . $OkulNo . $OkulTip . $Sinif . $Cinsiyet;
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
-              
+
 /*           //Anket
           $anket1 = isset($_POST["anket1"]) ? $_POST["anket1"] : "";
           $anket2 = isset($_POST["anket2"]) ? $_POST["anket2"] : "";
@@ -88,7 +88,7 @@
           if(!strcmp($s2_c1,"strawberry season")){$puan_yd=$puan_yd+10;
           }elseif(!strcmp($s2_c1,"STRAWBERRY SEASON")){$puan_yd=$puan_yd+10;}
 
-          
+
           //Soru3
           $s3_c1 = isset($_POST["s3_c1"]) ? $_POST["s3_c1"] : "";
           if($s3_c1=='0,1,8,3,9,5,7,6,4,2,0'){$puan_yd=$puan_yd+10;};
@@ -100,7 +100,7 @@
           $s4_c1 = isset($_POST["s4_c1"]) ? $_POST["s4_c1"] : "";
           if($s4_c1=='3'){$puan_ad=$puan_ad+10;};
           if($s4_c1=='4'){$puan_ad=$puan_ad+2;};
-          
+
           //Soru5
           $s5_c1 = isset($_POST["s5_c1"]) ? $_POST["s5_c1"] : "";
           if($s5_c1=='1,1,1,1,1,1,2,2,2,2,3,3,3,3,4,4,1,1'){$puan_pc=$puan_pc+10;};
@@ -109,7 +109,7 @@
           $s6_c1 = isset($_POST["s6_c1"]) ? $_POST["s6_c1"] : "";
           if($s6_c1=='2'){$puan_ad=$puan_ad+4;};
           if($s6_c1=='3'){$puan_ad=$puan_ad+10;};
-          
+
           //Soru7
           $s_a1 = isset($_POST["s_a1"]) ? $_POST["s_a1"] : "";
           $s_b1 = isset($_POST["s_b1"]) ? $_POST["s_b1"] : "";
@@ -147,8 +147,8 @@
           //Soru8
           $s8_c1 = isset($_POST["s8_c1"]) ? $_POST["s8_c1"] : "";
           if($s8_c1=='3'){$puan_ad=$puan_ad+10;};
-          
-          
+
+
           //Soru9
           $s9_c1 = isset($_POST["s9_c1"]) ? $_POST["s9_c1"] : "";
           $s9_c2 = isset($_POST["s9_c2"]) ? $_POST["s9_c2"] : "";
@@ -162,7 +162,7 @@
           //Soru10
           $s10_c1 = isset($_POST["s10_c1"]) ? $_POST["s10_c1"] : "";
           if($s10_c1=='6'){$puan_a=$puan_a+10;};
-          
+
           //Soru11
           $s11_c1 = isset($_POST["s11_c1"]) ? $_POST["s11_c1"] : "";
           if($s11_c1=='5,2,1,4,3'){$puan_s=$puan_s+10;};
@@ -176,10 +176,10 @@
           $tarih = date("Y-m-d H:i:s");
           $puan_total=$puan_pc+$puan_s+$puan_ad+$puan_a+$puan_kd+$puan_yd+$puan_ot;
           //STR_TO_DATE(date("d.m.Y h:i:s A"));
-          
+
           $sql = "INSERT INTO cts_tests (Date_, AdSoyad, OkulNo, OkulTip, Sinif, Cinsiyet, puan_total, puan_pc, puan_s, puan_ad, puan_a, puan_kd, puan_yd, puan_ot, s1_c1, s1_c2, s1_c3, s1_c4, s2_c1, s3_c1, s4_c1, s5_c1, s6_c1, s_a1, s_b1, s_c1, s_d1, s_e1, s_f1, s_g1, s_a2, s_b2, s_c2, s_d2, s_e2, s_f2, s_g2, s_a3, s_b3, s_c3, s_d3, s_e3, s_f3, s_g3, s_a4, s_b4, s_c4, s_d4, s_e4, s_f4, s_g4, s8_c1, s9_c1, s9_c2, s9_c3, s9_c4, s10_c1, s11_c1, s12_c1, anket1, anket2, anket3, anket4, anket5, anket6, anket7, anket8, anket9, anket10, anket11, anket12, anket13, anket14, anket15, anket16, anket17, anket18, anket19, anket20, anket21, anket22)
           VALUES ('$tarih', '$AdSoyad', '$OkulNo', '$OkulTip', '$Sinif', '$Cinsiyet','$puan_total', '$puan_pc', '$puan_s', '$puan_ad', '$puan_a', '$puan_kd', '$puan_yd', '$puan_ot', '$s1_c1', '$s1_c2', '$s1_c3', '$s1_c4', '$s2_c1', '$s3_c1', '$s4_c1', '$s5_c1', '$s6_c1', '$s_a1', '$s_b1', '$s_c1', '$s_d1', '$s_e1', '$s_f1', '$s_g1', '$s_a2', '$s_b2', '$s_c2', '$s_d2', '$s_e2', '$s_f2', '$s_g2', '$s_a3', '$s_b3', '$s_c3', '$s_d3', '$s_e3', '$s_f3', '$s_g3', '$s_a4', '$s_b4', '$s_c4', '$s_d4', '$s_e4', '$s_f4', '$s_g4', '$s8_c1', '$s9_c1', '$s9_c2', '$s9_c3', '$s9_c4', '$s10_c1', '$s11_c1', '$s12_c1', '$anket1', '$anket2', '$anket3', '$anket4', '$anket5', '$anket6', '$anket7', '$anket8', '$anket9', '$anket10', '$anket11', '$anket12', '$anket13', '$anket14', '$anket15', '$anket16', '$anket17', '$anket18', '$anket19', '$anket20', '$anket21', '$anket22')";
-          
+
           /*if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
           } else {
@@ -187,9 +187,9 @@
           }*/
 
 
-          
+
         ?>
-        
+
         <div class="jumbotron">
           <h3 class="display-5">Computational Thinking Score Result</h1>
           <p class="lead">On <?=date("d.m.Y");?>, 7 different skill scores were calculated over 12 questions.</p>
@@ -239,7 +239,7 @@
 
       </div>
     </div>
-    
+
   </div>
 
 <?php include 'assets/inc/footer.php';?>

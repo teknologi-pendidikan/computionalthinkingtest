@@ -1,4 +1,4 @@
-<?php include 'assets/inc/conn.php';?>
+<?php include 'assets/include/conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@ if (isset($_GET['p'])) {
 }
 
 $no_of_records_per_page = 13;
-$offset = ($pageno-1) * $no_of_records_per_page; 
+$offset = ($pageno-1) * $no_of_records_per_page;
 
 $total_pages_sql = "SELECT COUNT(*) FROM cts_tests";
 $result = mysqli_query($conn,$total_pages_sql);
@@ -34,8 +34,8 @@ $result = $conn->query($sql);
 <body class="patternbg">
 <?php include 'assets/inc/navbar.php';?>
   <div class="container">
-  <?php 
-    if ($result->num_rows > 0) { 
+  <?php
+    if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           $rowD[] = $row;
         }
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
                     <h6 class="mb-1 text-uppercase"><?=$r["AdSoyad"]?></h6>
                     <small><span class="badge badge-success p-1" style="font-size:12px;"><?=$r["puan_total"]?></span></small>
                 </div>
-                <small>Level/Course: <?=$r["Sinif"]?><br><?php 
+                <small>Level/Course: <?=$r["Sinif"]?><br><?php
                 if($r["Cinsiyet"]=="1"){echo "Woman";}elseif($r["Cinsiyet"]=="2"){echo "Man";}else{echo "Other";}?> - <?=$r["OkulNo"]?> - <?=date_format(date_create($r["Date_"]),"d.m.Y H:i")?></small>
             </a>
         <?php } ?>

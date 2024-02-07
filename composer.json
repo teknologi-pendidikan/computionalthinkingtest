@@ -1,0 +1,19 @@
+{
+    "name": "teknologipendidikan/ctst",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Teknologipendidikan\\Ctst\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vzrenggamani",
+            "email": "rengga.prakoso@gmail.com"
+        }
+    ],
+    "require": {
+        "drupaljedi/css-tree-shaking": "*"
+    }
+}
